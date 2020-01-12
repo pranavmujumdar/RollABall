@@ -46,6 +46,13 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             score = score + 1;
             UpdateScore();
+            // transform.localScale = new Vector3(2,2,2);
+        }
+    }
+    void OnCollisionEnter(Collision other) {
+        if(other.gameObject.CompareTag("SizeUp"))
+        {
+            transform.localScale = new Vector3(1.5f,1.5f,1.5f);
         }
     }
     void UpdateScore()

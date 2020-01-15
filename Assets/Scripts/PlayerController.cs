@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
         if(score >= 17)
         {
             winText.text = "You Win!";
+            Invoke("RestartGame", timeoutForRestart);
         }
         
     }

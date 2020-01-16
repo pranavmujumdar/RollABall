@@ -55,6 +55,10 @@ public class PlayerController : MonoBehaviour
             UpdateScore();
             // transform.localScale = new Vector3(2,2,2);
         }
+        if(other.gameObject.CompareTag("Teleporter"))
+        {
+            transform.position = new Vector3(8.63f, 0.5f, 5.54f);
+        }
     }
     void OnCollisionEnter(Collision other) {
         if(other.gameObject.CompareTag("SizeUp"))
@@ -72,7 +76,7 @@ public class PlayerController : MonoBehaviour
             UpdateLives();
             if(CheckRetries())
             {
-                transform.position = new Vector3(0,0,0);
+                transform.position = new Vector3(-9,0.5f,-9);
             }
             else
             {

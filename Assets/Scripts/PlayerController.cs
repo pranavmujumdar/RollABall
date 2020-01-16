@@ -47,10 +47,11 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetKeyDown("r"))
         {
-            lives -= 1;
-            UpdateLives();
+            
             if (CheckRetries())
             {
+                lives -= 1;
+                UpdateLives();
                 transform.position = new Vector3(-9, 0.5f, -9);
             }
             else
@@ -145,11 +146,12 @@ public class PlayerController : MonoBehaviour
         }
         if(other.gameObject.CompareTag("Spike"))
         {
-            lives -= 1;
-            // SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
-            UpdateLives();
+            
             if(CheckRetries())
             {
+                lives -= 1;
+                // SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+                UpdateLives();
                 transform.position = new Vector3(-9,0.5f,-9);
             }
             else
@@ -161,7 +163,7 @@ public class PlayerController : MonoBehaviour
     }
     void UpdateScore()
     {
-        scoreText.text = "Score: " + score.ToString();
+        scoreText.text = "Score: " + score.ToString() + " of 19";
         if(score >= 19)
         {
             winText.text = "You Win!";

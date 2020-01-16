@@ -41,7 +41,20 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        
+        if(Input.GetKeyDown("r"))
+        {
+            lives -= 1;
+            UpdateLives();
+            if (CheckRetries())
+            {
+                transform.position = new Vector3(-9, 0.5f, -9);
+            }
+            else
+            {
+                winText.text = "You Lose!";
+                Invoke("RestartGame", timeoutForRestart);
+            }
+        }
     }
     void FixedUpdate()
     {
@@ -105,10 +118,12 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("SizeUp"))
         {
             transform.localScale = new Vector3(1.5f,1.5f,1.5f);
+            speed = speed + 5;
         }
         if(other.gameObject.CompareTag("SizeDown"))
         {
             transform.localScale = new Vector3(1,1,1);
+            speed = speed - 5;
         }
         if(other.gameObject.CompareTag("Spike"))
         {

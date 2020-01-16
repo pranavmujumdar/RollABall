@@ -9,6 +9,8 @@ TagManager:
   - SizeDown
   - Spike
   - Teleporter
+  - Teleporter 2
+  - Teleporter 3
   layers:
   - Default
   - TransparentFX

@@ -27,7 +27,9 @@ public class PlayerController : MonoBehaviour
     public Text livesText;
     private int score; 
     private int lives;
-    public float speed; 
+    public float speed;
+    private float minspeed;
+    private float maxspeed;
     void Start() 
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -37,6 +39,8 @@ public class PlayerController : MonoBehaviour
         UpdateLives();
         winText.text = "";
         timeoutForRestart = 5;
+        minspeed = speed;
+        maxspeed = speed + 5;
     }
 
     private void Update()
@@ -118,12 +122,26 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("SizeUp"))
         {
             transform.localScale = new Vector3(1.5f,1.5f,1.5f);
-            speed = speed + 5;
+            if(speed == maxspeed)
+            {
+                Debug.Log("Maxspeed");
+            }
+            else
+            {
+                speed = speed + 5;
+            }
         }
         if(other.gameObject.CompareTag("SizeDown"))
         {
             transform.localScale = new Vector3(1,1,1);
-            speed = speed - 5;
+            if (speed == minspeed)
+            {
+                Debug.Log("Already Minspeed");
+            }
+            else
+            {
+                speed = speed - 5;
+            }
         }
         if(other.gameObject.CompareTag("Spike"))
         {

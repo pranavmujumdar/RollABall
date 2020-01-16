@@ -38,6 +38,11 @@ public class PlayerController : MonoBehaviour
         winText.text = "";
         timeoutForRestart = 5;
     }
+
+    private void Update()
+    {
+        
+    }
     void FixedUpdate()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -55,9 +60,45 @@ public class PlayerController : MonoBehaviour
             UpdateScore();
             // transform.localScale = new Vector3(2,2,2);
         }
-        if(other.gameObject.CompareTag("Teleporter"))
+        if (other.gameObject.CompareTag("Teleporter"))
         {
-            transform.position = new Vector3(8.63f, 0.5f, 5.54f);
+            if (score >= 12)
+            {
+                transform.position = new Vector3(8.63f, 0.5f, 5.54f);
+            }
+            else
+            {
+                Invoke("ShowTeleporter1Msg", 0.5f);
+            }
+        }
+            
+        if (other.gameObject.CompareTag("Teleporter 2"))
+        {
+            if (score >= 16)
+            {
+                transform.position = new Vector3(8.8f, 0.5f, 8.68f);
+            }
+            else
+            {
+                Invoke("ShowTeleporter2Msg",0.5f);
+            }
+        }
+            
+        if (other.gameObject.CompareTag("Teleporter 3"))
+        {
+            transform.position = new Vector3(-8.9f, 0.5f, 0.8f);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Teleporter"))
+        {
+            winText.text = "";
+        }
+
+        if (other.gameObject.CompareTag("Teleporter 2"))
+        {
+            winText.text = "";
         }
     }
     void OnCollisionEnter(Collision other) {
@@ -88,7 +129,7 @@ public class PlayerController : MonoBehaviour
     void UpdateScore()
     {
         scoreText.text = "Score: " + score.ToString();
-        if(score >= 17)
+        if(score >= 19)
         {
             winText.text = "You Win!";
             Invoke("RestartGame", timeoutForRestart);
@@ -111,5 +152,13 @@ public class PlayerController : MonoBehaviour
     }
     void RestartGame(){
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+    }
+    void ShowTeleporter1Msg()
+    {
+        winText.text = "Collect 12 Pick ups to open this teleporter";
+    }
+    void ShowTeleporter2Msg()
+    {
+        winText.text = "Collect 16 Pick ups to open this teleporter";
     }
 }

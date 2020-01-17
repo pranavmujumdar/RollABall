@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpikeMotion : MonoBehaviour
 {
     //adjust this to change speed
-    float speed = 1f;
+    public float speed = 1f;
     //adjust this to change how high it goes
     float height = 0.3f;
 

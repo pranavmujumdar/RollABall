@@ -12,10 +12,10 @@ public class CameraController : MonoBehaviour
     {
         offset = transform.position- player.transform.position;
     }
-
     // LateUpdate is called after all Update functions have been called. 
     void LateUpdate()
     {
         transform.position = player.transform.position + offset;
+        //transform.position = new Vector3(Input.mousePosition.x, transform.position.y, Input.mousePosition.z);
     }
 }

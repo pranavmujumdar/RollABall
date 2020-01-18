@@ -2446,11 +2446,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d1ff91a092c4b47bb73e74324ab0cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeoutForRestart: 0
+  timeoutForRestart: 5
   scoreText: {fileID: 995133001}
   winText: {fileID: 244558369}
   livesText: {fileID: 1342988708}
-  speed: 5
+  speed: 10
 --- !u!54 &327678379
 Rigidbody:
   m_ObjectHideFlags: 0

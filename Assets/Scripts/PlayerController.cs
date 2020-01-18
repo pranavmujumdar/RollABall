@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public Text winText;
     public Text livesText;
     private int score; 
-    private int lives;
+    public int lives;
     public float speed;
     private float minspeed;
     private float maxspeed;
@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         score = 0;
-        lives = 2;
+        //lives = 3;
         UpdateScore();
         UpdateLives();
         winText.text = "";
@@ -188,7 +188,7 @@ public class PlayerController : MonoBehaviour
      */ 
     void UpdateLives()
     {
-        livesText.text = "Lives Left: " + lives.ToString();
+        livesText.text = "Lives: " + lives.ToString();
     }
     /*
      * This function checks if the player has retries left, returns a boolean

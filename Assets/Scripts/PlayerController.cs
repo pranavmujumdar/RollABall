@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         score = 0;
-        lives = 3;
+        lives = 2;
         UpdateScore();
         UpdateLives();
         winText.text = "";
@@ -188,7 +188,7 @@ public class PlayerController : MonoBehaviour
      */ 
     void UpdateLives()
     {
-        livesText.text = "Lives: " + lives.ToString();
+        livesText.text = "Lives Left: " + lives.ToString();
     }
     /*
      * This function checks if the player has retries left, returns a boolean

@@ -5,21 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
-{
-    /*
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    */
-    // fixedupdate is called just before performing physics calculations, physics code goes here
+{   
     private Rigidbody rigidbody;
     public int timeoutForRestart;
     public Text scoreText;
@@ -30,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public float speed;
     private float minspeed;
     private float maxspeed;
+
+    // Start is called before the first frame update
     void Start() 
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -43,6 +31,10 @@ public class PlayerController : MonoBehaviour
         maxspeed = speed + 5;
     }
 
+    /*
+     * This function has the logic to restart the game with pressing r key on the keyboard
+     * It is called once per frame
+     */ 
     private void Update()
     {
         if(Input.GetKeyDown("r"))
@@ -61,6 +53,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    // fixedupdate is called just before performing physics calculations, physics code goes here
     void FixedUpdate()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -70,6 +63,11 @@ public class PlayerController : MonoBehaviour
 
         rigidbody.AddForce (movement * speed);
     }
+/**
+ * This function contains all the triggerEnter actions
+ * 1. When the player enters the PickUp box collider it will set increase the score by one and deactivate the trigger
+ * 2. When the player enters a teleporter box collider it will check if the certain score is met and display the msg if it does not or it teleports to the other part of the maze
+ */
     void OnTriggerEnter(Collider other) {
         if(other.gameObject.CompareTag("Pick Up"))
         {
@@ -107,6 +105,12 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(-8.9f, 0.5f, 0.8f);
         }
     }
+    /*
+     * This function contains all the TriggerExit logic
+     * When the player collides with the teleporter trigger,
+     * And if the player does not have the predefined score to open the teleporter it displays the msg 
+     * HENCE on trigger exit we need to disable the msg to empty
+     */
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Teleporter"))
@@ -119,6 +123,10 @@ public class PlayerController : MonoBehaviour
             winText.text = "";
         }
     }
+    /* This function contains all the Collision enter logic
+     * On collision with a size up tag the player size increases
+     * On collision with a size down tag the player size decreases
+     */ 
     void OnCollisionEnter(Collision other) {
         if(other.gameObject.CompareTag("SizeUp"))
         {
@@ -161,6 +169,10 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    /*
+     * This function updates the score and displays it in the left top corner
+     * And when the score reaches 19 Win text is displayed
+     */ 
     void UpdateScore()
     {
         scoreText.text = "Score: " + score.ToString() + " of 19";
@@ -171,10 +183,16 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+    /*
+     * This function Updates the lives of the player when it touches the spikes and displays it in the left top corner
+     */ 
     void UpdateLives()
     {
         livesText.text = "Lives: " + lives.ToString();
     }
+    /*
+     * This function checks if the player has retries left, returns a boolean
+     */
     bool CheckRetries(){
         if(lives>0)
         {
@@ -185,13 +203,22 @@ public class PlayerController : MonoBehaviour
             return false;
         }
     }
+    /*
+     * This function restarts the game with the samplescene
+     */ 
     void RestartGame(){
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
     }
+    /*
+     * This function displays the text to collect pick ups to open the teleporter1
+     */ 
     void ShowTeleporter1Msg()
     {
         winText.text = "Collect 12 Pick ups to open this teleporter";
     }
+    /*
+     * This function displays the text to collect pick ups to open the teleporter2
+     */ 
     void ShowTeleporter2Msg()
     {
         winText.text = "Collect 16 Pick ups to open this teleporter";

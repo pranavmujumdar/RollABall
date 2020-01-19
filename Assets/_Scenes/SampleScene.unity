@@ -2465,7 +2465,7 @@ MonoBehaviour:
   winText: {fileID: 244558369}
   livesText: {fileID: 1342988708}
   lives: 3
-  speed: 10
+  speed: 7
 --- !u!54 &327678379
 Rigidbody:
   m_ObjectHideFlags: 0

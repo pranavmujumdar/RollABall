@@ -194,7 +194,7 @@ public class PlayerController : MonoBehaviour
      * This function checks if the player has retries left, returns a boolean
      */
     bool CheckRetries(){
-        if(lives>0)
+        if(lives>1)
         {
             return true;
         }

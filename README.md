@@ -1,10 +1,12 @@
 # RollABall
 
-## This game is based on the Unity's Roll A Ball tutorial. Has following features:
+## This game is based on the Unity's Roll A Ball tutorial.
 
 [Gameplay Walkthrough 01:56 min](https://youtu.be/54YcZXaygs8)
+
 [Quick Feature Preview](https://youtu.be/TQTDEK-li5c)
 
+## Has following features:
 1. Ball gets bigger and faster on collision with the purple surfaces
 2. Ball gets smaller and slower on collision with the green surfaces
 3. One life is lost when ball touches the "Spikes", and ball is re-spawned to the beginning of the game 
